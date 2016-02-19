@@ -7,6 +7,15 @@ public class A3Driver
 
 	  public static void main(String[] args) 
 	  {
+		/* while (file function)
+		 * 	instantiate arraylist
+		 * 	call input function
+		 *  while(checkerror)
+		 *  	switch(operation)
+		 *  		operations	
+		 * */
+		  
+		  
 		// TODO Auto-generated method stub
 		
 		//Open file; file name specified in args (command line)
@@ -28,5 +37,42 @@ public class A3Driver
 			// of Grocery, it will invoke the calculatePrice () method defined in Grocery.
 		}		
 	  }
+	  
+	  static void insert(){ //sahil
+		  
+	  }
+	  
+	  static void search(){ //yash
+		  
+	  }
+	  
+	  static void delete(){ //sahil
+		  
+	  }
+	  
+	  static void update(){ //yash
+		  
+	  }
+	  
+	  static void print(){ //sahil
+		  
+	  }
+	  
+	  static String[] input(){ //yash
+		return null;  //parse the string into an array
+		
+	  }
+	  
+	  static boolean checkErrors(){ //sahil
+		  return true;
+	  }
+	  
+	  static String file(){ //yash
+		  return null;
+	  }
+	  
+	  
+	  
+	  
 
 }
