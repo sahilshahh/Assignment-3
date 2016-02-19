@@ -5,17 +5,8 @@ public class Clothing extends Item
 
 	// variables, constructors as necessary
 	
-	float calculatePrice () 
-	{
-		float final_price = 0;
-		// Insert price calculation here
-		return final_price;
+	protected Clothing(String itemname, double itemprice, int itemquantity, double itemweight) {
+		super(itemname, itemprice, itemquantity, itemweight);
 	}
-	
-	void printItemAttributes () 
-	{
-		//Print all applicable attributes of this sub-class
-	}
-	
 
 }
