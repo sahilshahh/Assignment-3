@@ -60,4 +60,33 @@ public class Electronics extends Item
 		System.out.print("State" + state + "\n");
 	}
 
+	public boolean isFragile() {
+		return fragile;
+	}
+
+	public void setFragile(boolean fragile) {
+		this.fragile = fragile;
+	}
+
+	public boolean isSalestax() {
+		return salestax;
+	}
+
+	public void setSalestax(boolean salestax) {
+		this.salestax = salestax;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	
+	
+	
+	
+	
 }

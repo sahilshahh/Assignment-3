@@ -40,5 +40,15 @@ public class Grocery extends Item {
 		System.out.print("Quantity: " + quantity + "\n");
 		System.out.print("Perishable" + perishable + "\n");
 	}
+
+	public boolean isPerishable() {
+		return perishable;
+	}
+
+	public void setPerishable(boolean perishable) {
+		this.perishable = perishable;
+	}
+	
+	
 	
 }
