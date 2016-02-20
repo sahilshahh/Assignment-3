@@ -22,7 +22,9 @@ public class Item
 		double final_price = 0;
 		// Insert price calculation here
 		double shipping = .2*weight*quantity;
-		final_price = price + shipping;
+		//is the given price the price of all items or price of only one
+		double totalprice = price * quantity;
+		final_price = totalprice + shipping;
 		return final_price;
 	}
 	
@@ -31,7 +33,7 @@ public class Item
 	{
 		//Print all applicable attributes of this class
 		System.out.print("Name: " + name + "\n");
-		System.out.print("Price: " + price + "\n");
+		System.out.print("Price: $" + price + "\n");
 		System.out.print("Weight: " + weight + "\n");
 		System.out.print("Quantity: " + quantity + "\n");
 	}

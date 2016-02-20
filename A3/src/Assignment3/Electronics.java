@@ -45,7 +45,8 @@ public class Electronics extends Item
 		else{
 			salestax1 = .1 * price;
 		}
-		final_price = price + shipping + salestax1;
+		double totalprice = price * quantity;
+		final_price = totalprice + shipping + salestax1;
 		return final_price;
 	}
 	
@@ -53,7 +54,7 @@ public class Electronics extends Item
 	{
 		//Print all applicable attributes of this class
 		System.out.print("Name: " + name + "\n");
-		System.out.print("Price: " + price + "\n");
+		System.out.print("Price: $" + price + "\n");
 		System.out.print("Weight: " + weight + "\n");
 		System.out.print("Quantity: " + quantity + "\n");
 		System.out.print("Fragile" + fragile + "\n");

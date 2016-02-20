@@ -7,6 +7,15 @@ public class A3Driver
 
 	  public static void main(String[] args) 
 	  {
+		/* while (file function)
+		 * 	instantiate arraylist
+		 * 	call input function
+		 *  while(checkerror)
+		 *  	switch(operation)
+		 *  		operations	
+		 * */
+		  
+		  
 		// TODO Auto-generated method stub
 		
 		//Open file; file name specified in args (command line)
@@ -14,7 +23,18 @@ public class A3Driver
 		//Parse input, take appropriate actions.
 		
 		//Stub for arraylist.
+		  
+		//test cases
 		ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
+		Clothing shirt = new Clothing("Shirt", 1, 1,1);  //delete after testing
+		Clothing shirt1 = new Clothing("Shirt1", 1, 1,1);  //delete after testing
+		Clothing shirt2 = new Clothing("Shirt2", 1, 10,1);  //delete after testing
+		shoppingCart.add(shirt);
+		shoppingCart.add(shirt1);
+		shoppingCart.add(shirt2);
+		shoppingCart.add(shirt);
+		print(shoppingCart);
+
 		
 		// General code example for how to iterate an array list. You will have to modify this heavily, to suit your needs.
 		Iterator<Item> i = shoppingCart.iterator();
@@ -28,5 +48,210 @@ public class A3Driver
 			// of Grocery, it will invoke the calculatePrice () method defined in Grocery.
 		}		
 	  }
+	  
+	  static void insert(){ //yash
+		  
+	  }
+	  
+	  /******************************************************************************
+	  * Method Name: search                                                         *
+	  * Purpose: Given the shopping cart and the name of the item, this function    *
+	  *          finds the number of items in the shopping cart that match the given*
+	  *          name                                                               *
+	  * Returns: None                                                               *
+	  ******************************************************************************/
+	  static void search(ArrayList<Item> shoppingCart, String input){ //sahil
+		  Iterator<Item> i = shoppingCart.iterator();
+		  int quantity = 0;
+		  while (i.hasNext()) 
+		  {
+			  Item temp = i.next();
+			  if (temp.getName().equals(input)){
+				  quantity = quantity + temp.getQuantity();
+			  }
+		  }
+		  System.out.print("There are/is " + quantity + " " + input + " in the shopping cart.");
+	  }
+	  
+	  /******************************************************************************
+	  * Method Name: delete                                                         *
+	  * Purpose: Given the shopping cart and the name of the item, this function    *
+	  *          deletes the items in the shopping cart that match the given name   *
+	  *          and prints the amount of times that were deleted                   *
+	  * Returns: None                                                               *
+	  ******************************************************************************/
+	  static void delete(ArrayList<Item> shoppingCart, String input){ //sahil
+		  Iterator<Item> i = shoppingCart.iterator();
+		  ArrayList<Integer> indexlist = new ArrayList<Integer>();
+		  int index = 0;
+		  int delete = 0;
+		  while (i.hasNext()) 
+		  {
+			  Item temp = i.next();
+			  if (temp.getName().equals(input)){
+				  indexlist.add(index);
+				  delete++;
+			  }
+			  index++;
+		  } 
+		  int count =0;
+		  Iterator<Item> j = shoppingCart.iterator();
+		  while (j.hasNext()) 
+		  {			  
+		        j.next();
+		        if(indexlist.contains(count)){
+		            j.remove();
+		        }
+		        count++;
+		  }
+		  System.out.print(delete + " " + input + " " + "item/items were/was deleted.");
+	  }
+	  
+	  static void update(){ //yash
+		  
+	  }
+	  
+	  /******************************************************************************
+	  * Method Name: print                                                          *
+	  * Purpose: Given the shopping cart, this function prints out the instance     *
+	  *          variables of every item as well as the total price of the item.    *
+	  *          It then prints out the total price for the shopping cart           *
+	  * Returns: None                                                               *
+	  ******************************************************************************/
+	  static void print(ArrayList<Item> shoppingCart){ //sahil
+			Iterator<Item> i = shoppingCart.iterator();
+			double cartprice = 0;
+			while (i.hasNext()) 
+			{
+				Item temp = i.next();
+				temp.printItemAttributes();
+				double totalprice = temp.calculatePrice();
+				cartprice= cartprice + totalprice;
+				System.out.print("Total Item Price: $" + totalprice);
+				System.out.print("\n");
+				System.out.print("\n");
+			}
+			System.out.print("Total Shopping Cart Price: $" + cartprice);
+	  }
+	  
+	  static String[] input(){ //yash
+		return null;  //parse the string into an array
+		
+	  }
+	  
+	  /******************************************************************************
+	  * Method Name: checkErrors                                                    *
+	  * Purpose: Checks if the input string has any errors                          *
+	  * Returns: None                                                               *
+	  ******************************************************************************/
+	  static boolean checkErrors(String[] transaction){ //sahil
+		  if (transaction[0].equals("insert")){
+			  if(transaction[1].equals("clothing")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  return true;
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  if(transaction[1].equals("grocery")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  if (transaction[6].equals("NP")|| transaction[6].equals("P")){
+								  return true;
+							  }
+							  else{
+								  return false;
+							  }
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  if(transaction[1].equals("electronics")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  if (transaction[6].equals("F")|| transaction[6].equals("NF")){
+								  return true;
+							  }
+							  else{
+								  return false;
+							  }
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  else{
+				  return false;
+			  }
+		  }
+		  else if (transaction[0].equals("search")){
+			  return true;
+		  }
+		  else if (transaction[0].equals("delete")){
+			  return true;
+		  }
+		  else if (transaction[0].equals("update")){
+			  int amount = Integer.parseInt(transaction[2]);
+			  if (amount > 0){
+				  return true;
+			  }
+			  else{
+				  return false;
+			  }
+		  }
+		  else if (transaction[0].equals("print")){
+			  return true;
+		  }
+		  else {
+			  return false;
+		  }
+	  }
+	  
+	  static String file(){ //yash
+		  return null;
+	  }
+	  
+	  
+	  
+	  
 
 }
