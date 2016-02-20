@@ -74,6 +74,7 @@ public class A3Driver
 				{
 					shoppingCart.add(x, input);
 					added = true;
+					System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
 				}
 				
 ///////if first letter less than input's first letter then increment x
@@ -96,6 +97,7 @@ public class A3Driver
 							{
 								shoppingCart.add(x, input);
 								added = true;
+								System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
 							}
 						}
 					}
@@ -113,6 +115,7 @@ public class A3Driver
 			{
 				shoppingCart.add(shoppingCart.size(), input);
 				added = true;
+				System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
 			}
 	  }
 	  
@@ -148,6 +151,7 @@ public class A3Driver
 					  int quantity = temp.getQuantity();
 					  quantity = quantity + change;
 					  temp.setQuantity(quantity);
+					  System.out.println("The item " + temp.getName()+" had "+change+" added to its quantity");
 				  }
 			  }
 		  }
