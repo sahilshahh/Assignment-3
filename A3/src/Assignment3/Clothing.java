@@ -9,4 +9,8 @@ public class Clothing extends Item
 		super(itemname, itemprice, itemquantity, itemweight);
 	}
 
+	public Clothing() {
+		// TODO Auto-generated constructor stub
+	}
+
 }
