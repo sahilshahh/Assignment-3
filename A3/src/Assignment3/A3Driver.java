@@ -44,14 +44,17 @@ public class A3Driver
 	}
 	  
 	  /*********************************************************************************
-	  * Method Name: insert                                                            *
-	  * Purpose: takes a new item and inserts it into the arraylist(your shopping cart)*
-	  *          in alphabetical order. It can add 2 of the same elements, so that     *
-	  *          there are 2 different hats      									   *
-	  * Returns: None                                                                  *
-	  * 																			   *
-	  * questions: if it passes in an existing item should i just add it in again or   *
-	  * 		  update the current item quantity. what if the prices are different?  *
+	  * Method Name: insert                                                            
+	  * Purpose: takes a new item and inserts it into the arraylist(your shopping cart)
+	  *          in alphabetical order. It can add 2 of the same elements, so that     
+	  *          there can be 2 different hats      									   
+	  * Returns: None                                                                  
+	  * 																			   
+	  * questions: 1. if it passes in an existing item should i just add it in again or   
+	  * 		  update the current item quantity. what if the prices are different?  
+	  * 
+	  * 		 2. is Hat the same as hat? i did a toupperCase when comparing the strings
+	  * 			
 	  ******************************************************************************/
 	  
 	  static void insert(ArrayList<Item> shoppingCart, Item input){ //yash
@@ -74,7 +77,7 @@ public class A3Driver
 				{
 					shoppingCart.add(x, input);
 					added = true;
-					System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
+					System.out.println("The item " + input.getName()+ " was added to the shoppingcart");
 				}
 				
 ///////if first letter less than input's first letter then increment x
@@ -97,7 +100,7 @@ public class A3Driver
 							{
 								shoppingCart.add(x, input);
 								added = true;
-								System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
+								System.out.println("The item " + input.getName()+ " was added to the shoppingcart");
 							}
 						}
 					}
@@ -115,7 +118,7 @@ public class A3Driver
 			{
 				shoppingCart.add(shoppingCart.size(), input);
 				added = true;
-				System.out.println("The item " + temp.getName()+ " was added to the shoppingcart");
+				System.out.println("The item " + input.getName()+ " was added to the shoppingcart");
 			}
 	  }
 	  
