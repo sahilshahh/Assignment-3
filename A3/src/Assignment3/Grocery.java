@@ -27,7 +27,8 @@ public class Grocery extends Item {
 		else{
 			shipping = (.2*weight*quantity);
 		}
-		final_price = price + shipping;
+		double totalprice = price * quantity;
+		final_price = totalprice + shipping;
 		return final_price;
 	}
 	
@@ -35,7 +36,7 @@ public class Grocery extends Item {
 	{
 		//Print all applicable attributes of this class
 		System.out.print("Name: " + name + "\n");
-		System.out.print("Price: " + price + "\n");
+		System.out.print("Price: $" + price + "\n");
 		System.out.print("Weight: " + weight + "\n");
 		System.out.print("Quantity: " + quantity + "\n");
 		System.out.print("Perishable" + perishable + "\n");
