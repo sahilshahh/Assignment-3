@@ -139,8 +139,111 @@ public class A3Driver
 		
 	  }
 	  
-	  static boolean checkErrors(){ //sahil
-		  return true;
+	  /******************************************************************************
+	  * Method Name: checkErrors                                                    *
+	  * Purpose: Checks if the input string has any errors                          *
+	  * Returns: None                                                               *
+	  ******************************************************************************/
+	  static boolean checkErrors(String[] transaction){ //sahil
+		  if (transaction[0].equals("insert")){
+			  if(transaction[1].equals("clothing")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  return true;
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  if(transaction[1].equals("grocery")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  if (transaction[6].equals("NP")|| transaction[6].equals("P")){
+								  return true;
+							  }
+							  else{
+								  return false;
+							  }
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  if(transaction[1].equals("electronics")){
+				  double amount = Double.parseDouble(transaction[3]);
+				  if (amount > 0){
+					  int amount1 = Integer.parseInt(transaction[4]);
+					  if (amount1 >0){
+						  double amount2 = Double.parseDouble(transaction[5]);
+						  if (amount2 > 0){
+							  if (transaction[6].equals("F")|| transaction[6].equals("NF")){
+								  return true;
+							  }
+							  else{
+								  return false;
+							  }
+						  }
+						  else{
+							  return false;
+						  }
+					  }
+					  else{
+						  return false;
+					  }
+				  }
+				  else{
+					  return false;
+				  }
+			  }
+			  else{
+				  return false;
+			  }
+		  }
+		  else if (transaction[0].equals("search")){
+			  return true;
+		  }
+		  else if (transaction[0].equals("delete")){
+			  return true;
+		  }
+		  else if (transaction[0].equals("update")){
+			  int amount = Integer.parseInt(transaction[2]);
+			  if (amount > 0){
+				  return true;
+			  }
+			  else{
+				  return false;
+			  }
+		  }
+		  else if (transaction[0].equals("print")){
+			  return true;
+		  }
+		  else {
+			  return false;
+		  }
 	  }
 	  
 	  static String file(){ //yash
