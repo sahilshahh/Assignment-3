@@ -1,5 +1,9 @@
 package Assignment3;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class A3Driver 
@@ -36,7 +40,10 @@ public class A3Driver
 		  update(shoppingCart, xbox, 3);
 		  update(shoppingCart, shorts, -1);
 		  
-		  String[] test = input("This is the	 input              function test 111111");
+		  String[] test = input("This is the	 input   function test 111111");
+		  
+//		  ArrayList<String> fileinput = new ArrayList<String>();
+//		  fileinput = file(args[0]);
 		  
 		  int thisisjustfordebuggingpurposes = 0;
 		  
@@ -165,13 +172,13 @@ public class A3Driver
 		  
 	  }
 	  
-	  /******************************************************************************
-	  * Method Name: input                                                         
-	  * Purpose: takes the whole input line string (comes from read file function)
-	  * 		 and splits it into different words which are put in an array of strings
-	  * 		 without the spaces                                                               
-	  * Returns: array of strings with separate words                                                                
-	  ******************************************************************************/
+	/******************************************************************************
+	* Method Name: input                                                         
+	* Purpose: takes the whole input line string(comes from read file function)
+	* 		   and splits it into different words which are put in an array of 
+	* 		   strings without the spaces                                                               
+	* Returns: array of strings with separate words                                                                
+	******************************************************************************/
 	  
 	  static String[] input(String input){ //yash
 		  
@@ -184,10 +191,48 @@ public class A3Driver
 		  return true;
 	  }
 	  
-	  static String file(){ //yash
+	  
+	  /******************************************************************************
+	   * Method Name: file                                                         
+	   * Purpose: opens the file and then reads each line until there are no
+	   * 		   more lines to read and stores each line as its own
+	   *           element in an arraylist.                                                            
+	   * Returns: arraylist of every line in the input file, each line is
+	   * 		  it's own element in arraylist                                                               
+	   ******************************************************************************/
+	  static ArrayList<String> file(String filename) //yash
+	  {
+		  
+		  ArrayList<String> inputlines = new ArrayList<String>();
+		  
+		  try 
+			{
+				FileReader freader = new FileReader(filename);
+				BufferedReader reader = new BufferedReader(freader);
+				
+				for (String s = reader.readLine(); s != null; s = reader.readLine()) 
+				{
+					inputlines.add(s);
+				}
+		
+				reader.close();
+				return inputlines;
+			} 
+			catch (FileNotFoundException e) 
+			{
+				System.err.println ("Error: File not found. Exiting...");
+				e.printStackTrace();
+				System.exit(-1);
+			} catch (IOException e) 
+			{
+				System.err.println ("Error: IO exception. Exiting...");
+				e.printStackTrace();
+				System.exit(-1);
+			}
+		  
+		  
 		  return null;
 	  }
-	  
 	  
 }
 
