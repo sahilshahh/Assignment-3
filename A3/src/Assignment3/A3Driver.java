@@ -18,42 +18,36 @@ public class A3Driver
 		 *  	switch(operation)
 		 *  		operations	
 		 * */
-		  
-		
+		  		
 		  ArrayList<String> fileinput = new ArrayList<String>();
 		  fileinput = file(args[0]);
-		  
-		// TODO Auto-generated method stub
-		
-		//Open file; file name specified in args (command line)
-		
-		//Parse input, take appropriate actions.
-		
-		//Stub for arraylist.
-		  
-		//test cases
-		ArrayList<Item> shoppingCart = new ArrayList<Item>(); 
-		Clothing shirt = new Clothing("Shirt", 1, 1,1);  //delete after testing
-		Clothing shirt1 = new Clothing("Shirt1", 1, 1,1);  //delete after testing
-		Clothing shirt2 = new Clothing("Shirt2", 1, 10,1);  //delete after testing
-		shoppingCart.add(shirt);
-		shoppingCart.add(shirt1);
-		shoppingCart.add(shirt2);
-		shoppingCart.add(shirt);
-		print(shoppingCart);
+		  ArrayList<Item> shoppingCart = new ArrayList<Item>();
+		  for (int i = 0; i < fileinput.size(); i++){
+			  String[] temp = input(fileinput.get(i));
+			  if(checkErrors(temp)){
+				  switch(temp[0]){
+				  	case "insert":
+				  		Item temporary = createobjects(temp);
+				  		insert(shoppingCart, temporary);
+				  		break;
+				  	case "delete":
+				  		delete(shoppingCart, temp[1]);
+				  		break;
+				  	case "search":
+				  		search(shoppingCart, temp[1]);
+				  		break;
+				  	case "update":
+				  		int number = Integer.parseInt(temp[2]);
+				  		update(shoppingCart, temp[1], number);
+				  		break;
+				  	case "print":
+				  		print(shoppingCart);
+				  }
+					  
+			  }
+		  }
 
-		
-		// General code example for how to iterate an array list. You will have to modify this heavily, to suit your needs.
-		Iterator<Item> i = shoppingCart.iterator();
-		while (i.hasNext()) 
-		{
-			Item temp = i.next();
-			temp.calculatePrice(); 
-			temp.printItemAttributes();
-			//This (above) works because of polymorphism: a determination is made at runtime, 
-			//based on the inherited class type, as to which method is to be invoked. Eg: If it is an instance
-			// of Grocery, it will invoke the calculatePrice () method defined in Grocery.
-		}		
+		int zero = 0; 		
 	  }
 	  
 	  
@@ -153,6 +147,7 @@ public class A3Driver
 			  }
 		  }
 		  System.out.print("There are/is " + quantity + " " + input + " in the shopping cart.");
+		  System.out.print("\n");
 	  }
 	  
 	  /******************************************************************************
@@ -187,6 +182,7 @@ public class A3Driver
 		        count++;
 		  }
 		  System.out.print(delete + " " + input + " " + "item/items were/was deleted.");
+		  System.out.print("\n");
 	  }
 	  
 	  
@@ -199,21 +195,21 @@ public class A3Driver
 	  * questions: what if current item quantity = 3 but they want to take 1 out?
 	  * 			would -1 be a legal input
 	  ******************************************************************************/  
-	  static void update(ArrayList<Item> shoppingCart, Item input, int change){ //yash
+	  static void update(ArrayList<Item> shoppingCart, String input, int change){ //yash
 		  Iterator<Item> i = shoppingCart.iterator();
+		  boolean changed = false;
 		  
-		  if(change>0)
+		  if(change>=0)
 		  {
-			  while (i.hasNext()) 
+			  while (i.hasNext()&& !changed) 
 			  {
 				  Item temp = i.next();
 				  
-				  if(temp.getName().equals(input.getName()))
+				  if(temp.getName().equals(input))
 				  {
-					  int quantity = temp.getQuantity();
-					  quantity = quantity + change;
-					  temp.setQuantity(quantity);
-					  System.out.println("The item " + temp.getName()+" had "+change+" added to its quantity");
+					  temp.setQuantity(change);
+					  System.out.println("The item " + temp.getName()+" has a new quantity of "+change);
+					  changed = true;
 				  }
 			  }
 		  }
@@ -407,6 +403,72 @@ public class A3Driver
 		  return null;
 	  }
 	  
-	  
+	  public static Item createobjects(String[] input){
+		  String temp = input[1];
+		  temp = temp.toUpperCase();
+		  Electronics elec =new Electronics();
+		  Clothing cloth = new Clothing();
+		  Grocery groc = new Grocery();
+		  
+		  if(temp.equals("CLOTHING"))
+		  {
+			cloth.setName(input[2]);
+			double price = Double.parseDouble(input[3]);
+			cloth.setPrice(price);
+			int quantity = Integer.parseInt(input[4]);
+			cloth.setQuantity(quantity);
+			int weight = Integer.parseInt(input[5]);
+			cloth.setWeight(weight);
+			return cloth;
+		  }
+		  if(temp.equals("GROCERY"))
+		  {
+			  groc.setName(input[2]);
+				double price = Double.parseDouble(input[3]);
+				groc.setPrice(price);
+				int quantity = Integer.parseInt(input[4]);
+				groc.setQuantity(quantity);
+				int weight = Integer.parseInt(input[5]);
+				groc.setWeight(weight);
+				String itemperish = input[6];
+				if (itemperish.equals("P")){
+					groc.setPerishable(true);;
+				}
+				else{
+					groc.setPerishable(false);;
+				}
+				return groc;
+
+		  }
+		  if(temp.equals("ELECTRONICS"))
+		  {
+			  elec.setName(input[2]);
+			  double price = Double.parseDouble(input[3]);
+				elec.setPrice(price);
+				int quantity = Integer.parseInt(input[4]);
+				elec.setQuantity(quantity);
+				int weight = Integer.parseInt(input[5]);
+				elec.setWeight(weight);
+				String fragileitem = input[6];
+				String itemstate = input[7];
+				elec.setState(itemstate);
+				if (fragileitem.equals("F")){
+					elec.setFragile(true);
+				}
+				else{
+					elec.setFragile(false);
+				}
+				if (itemstate.equals("TX")||itemstate.equals("NM")||itemstate.equals("VA")||itemstate.equals("AZ")||itemstate.equals("AK") ){
+					elec.setSalestax(true);
+				}
+				else{
+					elec.setSalestax(false);
+				}
+				
+			  return elec;
+		  }
+		  return null;
+		  
+	  }
 
 }

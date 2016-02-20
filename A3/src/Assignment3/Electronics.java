@@ -27,6 +27,10 @@ public class Electronics extends Item
 	
 	//Implement calculate price/print methods as necessary
 	
+	public Electronics() {
+		// TODO Auto-generated constructor stub
+	}
+
 	double calculatePrice () 
 	{
 		double final_price = 0;
@@ -57,10 +61,10 @@ public class Electronics extends Item
 		System.out.print("Price: $" + price + "\n");
 		System.out.print("Weight: " + weight + "\n");
 		System.out.print("Quantity: " + quantity + "\n");
-		System.out.print("Fragile" + fragile + "\n");
-		System.out.print("State" + state + "\n");
+		System.out.print("Fragile: " + fragile + "\n");
+		System.out.print("State: " + state + "\n");
 	}
-
+	
 	public boolean isFragile() {
 		return fragile;
 	}

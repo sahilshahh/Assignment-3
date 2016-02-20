@@ -18,6 +18,10 @@ public class Grocery extends Item {
 	//override calculatePrice() if necessary; Implement print methods as necessary	
 	// Only re-implement stuff you cannot get from the superclass (Item)
 	
+	public Grocery() {
+		// TODO Auto-generated constructor stub
+	}
+
 	double calculatePrice(){
 		double final_price = 0;
 		double shipping = 0;

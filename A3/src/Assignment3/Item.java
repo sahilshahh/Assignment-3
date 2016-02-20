@@ -9,6 +9,7 @@ public class Item
 	protected double weight;
 // You will need a constructor (Why?). Create it here.
 	
+	protected Item(){}
 	protected Item(String itemname, double itemprice, int itemquantity, double itemweight)
 	{
 		name = itemname;
