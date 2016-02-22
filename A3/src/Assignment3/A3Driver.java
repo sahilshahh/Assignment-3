@@ -46,7 +46,7 @@ public class A3Driver
 					  
 			  }
 		  }
-
+		//breakpoint
 		int zero = 0; 		
 	  }
 	  
@@ -259,7 +259,9 @@ public class A3Driver
 	  * Returns: None                                                               *
 	  ******************************************************************************/
 	  static boolean checkErrors(String[] transaction){ //sahil
+		  transaction[0] = transaction[0].toLowerCase();
 		  if (transaction[0].equals("insert")){
+			  transaction[1] = transaction[1].toLowerCase();
 			  if(transaction[1].equals("clothing")){
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
@@ -270,14 +272,17 @@ public class A3Driver
 							  return true;
 						  }
 						  else{
+							  System.out.print("Invalid input");
 							  return false;
 						  }
 					  }
 					  else{
+						  System.out.print("Invalid input");
 						  return false;
 					  }
 				  }
 				  else{
+					  System.out.print("Invalid input");
 					  return false;
 				  }
 			  }
@@ -292,18 +297,22 @@ public class A3Driver
 								  return true;
 							  }
 							  else{
+								  System.out.print("Invalid input");
 								  return false;
 							  }
 						  }
 						  else{
+							  System.out.print("Invalid input");
 							  return false;
 						  }
 					  }
 					  else{
+						  System.out.print("Invalid input");
 						  return false;
 					  }
 				  }
 				  else{
+					  System.out.print("Invalid input");
 					  return false;
 				  }
 			  }
@@ -318,22 +327,27 @@ public class A3Driver
 								  return true;
 							  }
 							  else{
+								  System.out.print("Invalid input");
 								  return false;
 							  }
 						  }
 						  else{
+							  System.out.print("Invalid input");
 							  return false;
 						  }
 					  }
 					  else{
+						  System.out.print("Invalid input");
 						  return false;
 					  }
 				  }
 				  else{
+					  System.out.print("Invalid input");
 					  return false;
 				  }
 			  }
 			  else{
+				  System.out.print("Invalid input");
 				  return false;
 			  }
 		  }
@@ -349,6 +363,7 @@ public class A3Driver
 				  return true;
 			  }
 			  else{
+				  System.out.print("Invalid input");
 				  return false;
 			  }
 		  }
@@ -356,6 +371,7 @@ public class A3Driver
 			  return true;
 		  }
 		  else {
+			  System.out.print("Invalid input");
 			  return false;
 		  }
 	  }
@@ -424,46 +440,46 @@ public class A3Driver
 		  if(temp.equals("GROCERY"))
 		  {
 			  groc.setName(input[2]);
-				double price = Double.parseDouble(input[3]);
-				groc.setPrice(price);
-				int quantity = Integer.parseInt(input[4]);
-				groc.setQuantity(quantity);
-				int weight = Integer.parseInt(input[5]);
-				groc.setWeight(weight);
-				String itemperish = input[6];
-				if (itemperish.equals("P")){
-					groc.setPerishable(true);;
-				}
-				else{
-					groc.setPerishable(false);;
-				}
-				return groc;
+			  double price = Double.parseDouble(input[3]);
+			  groc.setPrice(price);
+			  int quantity = Integer.parseInt(input[4]);
+			  groc.setQuantity(quantity);
+			  int weight = Integer.parseInt(input[5]);
+			  groc.setWeight(weight);
+			  String itemperish = input[6];
+			  if (itemperish.equals("P")){
+			  	groc.setPerishable(true);;
+			  }
+			  else{
+				groc.setPerishable(false);;
+		      }
+			  return groc;
 
 		  }
 		  if(temp.equals("ELECTRONICS"))
 		  {
 			  elec.setName(input[2]);
 			  double price = Double.parseDouble(input[3]);
-				elec.setPrice(price);
-				int quantity = Integer.parseInt(input[4]);
-				elec.setQuantity(quantity);
-				int weight = Integer.parseInt(input[5]);
-				elec.setWeight(weight);
-				String fragileitem = input[6];
-				String itemstate = input[7];
-				elec.setState(itemstate);
-				if (fragileitem.equals("F")){
-					elec.setFragile(true);
-				}
-				else{
-					elec.setFragile(false);
-				}
-				if (itemstate.equals("TX")||itemstate.equals("NM")||itemstate.equals("VA")||itemstate.equals("AZ")||itemstate.equals("AK") ){
-					elec.setSalestax(true);
-				}
-				else{
-					elec.setSalestax(false);
-				}
+			  elec.setPrice(price);
+			  int quantity = Integer.parseInt(input[4]);
+			  elec.setQuantity(quantity);
+			  int weight = Integer.parseInt(input[5]);
+			  elec.setWeight(weight);
+			  String fragileitem = input[6];
+			  String itemstate = input[7];
+			  elec.setState(itemstate);
+			  if (fragileitem.equals("F")){
+				elec.setFragile(true);
+			  }
+			  else{
+			 	elec.setFragile(false);
+		      }
+			  if (itemstate.equals("TX")||itemstate.equals("NM")||itemstate.equals("VA")||itemstate.equals("AZ")||itemstate.equals("AK") ){
+				elec.setSalestax(true);
+			  }
+			  else{
+			 	elec.setSalestax(false);
+			  }
 				
 			  return elec;
 		  }

@@ -6,11 +6,11 @@ public class Item
 	protected String name;
 	protected double price;
 	protected int quantity;
-	protected double weight;
+	protected int weight;
 // You will need a constructor (Why?). Create it here.
 	
 	protected Item(){}
-	protected Item(String itemname, double itemprice, int itemquantity, double itemweight)
+	protected Item(String itemname, double itemprice, int itemquantity, int itemweight)
 	{
 		name = itemname;
 		price = itemprice;
@@ -67,7 +67,7 @@ public class Item
 		return weight;
 	}
 
-	public void setWeight(double weight) {
+	public void setWeight(int weight) {
 		this.weight = weight;
 	}
 

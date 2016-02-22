@@ -8,7 +8,7 @@ public class Electronics extends Item
 	protected boolean salestax;
 	protected String state;
 	
-	protected Electronics(String itemname, double itemprice, int itemquantity, double itemweight, String fragileitem, String itemstate) {
+	protected Electronics(String itemname, double itemprice, int itemquantity, int itemweight, String fragileitem, String itemstate) {
 		super(itemname, itemprice, itemquantity, itemweight);
 		state = itemstate;
 		if (fragileitem.equals("F")){
@@ -47,7 +47,7 @@ public class Electronics extends Item
 			salestax1 =0;
 		}
 		else{
-			salestax1 = .1 * price;
+			salestax1 = .1 * price * quantity;
 		}
 		double totalprice = price * quantity;
 		final_price = totalprice + shipping + salestax1;

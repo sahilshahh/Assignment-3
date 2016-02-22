@@ -5,7 +5,7 @@ public class Grocery extends Item {
 	//variables, constructor here
 	protected boolean perishable;
 	
-	protected Grocery(String itemname, double itemprice, int itemquantity, double itemweight, String itemperish) {
+	protected Grocery(String itemname, double itemprice, int itemquantity, int itemweight, String itemperish) {
 		super(itemname, itemprice, itemquantity, itemweight);
 		if (itemperish.equals("P")){
 			perishable = true;
