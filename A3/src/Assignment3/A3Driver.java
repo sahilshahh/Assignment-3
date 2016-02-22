@@ -69,14 +69,14 @@ public class A3Driver
 		  int x = 0;
 		  boolean added = false;
 		  String inputname = input.getName();
-		  inputname = inputname.toUpperCase();
+		  //inputname = inputname.toUpperCase();
 		  
 			while (i.hasNext() && !added) 
 			{
 				boolean incremented = false;
 				Item temp = i.next();
 				String name = temp.getName();
-				name = name.toUpperCase();
+				//name = name.toUpperCase();
 				
 ////////////if the shoppingcart word's first letter is greater than inputname's
 //////////first letter then add
@@ -265,89 +265,167 @@ public class A3Driver
 			  if(transaction[1].equals("clothing")){
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
+						    System.out.print("Invalid input");
+							System.out.print("\n");
+						  	return false;
+					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
-						  double amount2 = Double.parseDouble(transaction[5]);
-						  if (amount2 > 0){
-							  return true;
+						  try{
+							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
+								  	System.out.print("Invalid input");
+									System.out.print("\n");
+								  	return false;
+							  }
+							  int amount2 = Integer.parseInt(transaction[5]);
+							  if (amount2 > 0){
+							  	return true;
+						  	  }
+						  	  else{
+							  	System.out.print("Invalid input");
+								System.out.print("\n");
+							  	return false;
+						  	}
 						  }
-						  else{
-							  System.out.print("Invalid input");
-							  return false;
-						  }
+						  catch(Exception e){
+								System.out.print("Invalid input");
+								System.out.print("\n");
+								return false;
+						  }						  						  						  					
 					  }
 					  else{
 						  System.out.print("Invalid input");
+						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
 					  System.out.print("Invalid input");
+					  System.out.print("\n");
 					  return false;
 				  }
 			  }
 			  if(transaction[1].equals("grocery")){
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
+						  	System.out.print("Invalid input");
+							System.out.print("\n");
+						  	return false;
+					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
-						  double amount2 = Double.parseDouble(transaction[5]);
-						  if (amount2 > 0){
-							  if (transaction[6].equals("NP")|| transaction[6].equals("P")){
-								  return true;
+						  try{
+							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
+								  	System.out.print("Invalid input");
+									System.out.print("\n");
+								  	return false;
+							  }
+							  int amount2 = Integer.parseInt(transaction[5]);
+							  if (amount2 > 0){
+								  if (transaction[6].equals("NP")|| transaction[6].equals("P")){
+									  return true;
+								  }
+								  else{
+									  System.out.print("Invalid input");
+									  System.out.print("\n");
+									  return false;
+								  }
 							  }
 							  else{
 								  System.out.print("Invalid input");
+								  System.out.print("\n");
 								  return false;
-							  }
-						  }
-						  else{
-							  System.out.print("Invalid input");
-							  return false;
-						  }
+						  		}
+						  	}
+						  	catch (Exception e){
+						  		System.out.print("Invalid input");
+						  		System.out.print("\n");
+						  		return false;
+						  	}
 					  }
 					  else{
 						  System.out.print("Invalid input");
+						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
 					  System.out.print("Invalid input");
+					  System.out.print("\n");
 					  return false;
 				  }
 			  }
 			  if(transaction[1].equals("electronics")){
+				  String[] states = {
+			                  "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+			                  "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+			                  "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+			                  "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+			                  "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",
+			                  "AS", "DC", "FM", "GU", "MH", "MP", "PR", "PW", "VI"
+			      };
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
+						  	System.out.print("Invalid input");
+							System.out.print("\n");
+						  	return false;
+					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
-						  double amount2 = Double.parseDouble(transaction[5]);
-						  if (amount2 > 0){
-							  if (transaction[6].equals("F")|| transaction[6].equals("NF")){
-								  return true;
+						  try{
+							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
+								  	System.out.print("Invalid input");
+									System.out.print("\n");
+								  	return false;
+							  }
+							  int amount2 = Integer.parseInt(transaction[5]);
+							  if (amount2 > 0){
+								  if (transaction[6].equals("F")|| transaction[6].equals("NF")){
+									  if (Arrays.asList(states).contains(transaction[7].toUpperCase())){
+										  return true;
+									  }
+									  else{
+										  System.out.print("Invalid input");
+										  System.out.print("\n");
+										  return false;
+									  }
+								  }
+								  else{
+									  System.out.print("Invalid input");
+									  System.out.print("\n");
+									  return false;
+								  }
 							  }
 							  else{
 								  System.out.print("Invalid input");
+								  System.out.print("\n");
 								  return false;
 							  }
 						  }
-						  else{
+						  catch(Exception e){
 							  System.out.print("Invalid input");
+							  System.out.print("\n");
 							  return false;
 						  }
 					  }
 					  else{
 						  System.out.print("Invalid input");
+						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
 					  System.out.print("Invalid input");
+					  System.out.print("\n");
 					  return false;
 				  }
 			  }
 			  else{
 				  System.out.print("Invalid input");
+				  System.out.print("\n");
 				  return false;
 			  }
 		  }
@@ -364,6 +442,7 @@ public class A3Driver
 			  }
 			  else{
 				  System.out.print("Invalid input");
+				  System.out.print("\n");
 				  return false;
 			  }
 		  }
@@ -372,6 +451,7 @@ public class A3Driver
 		  }
 		  else {
 			  System.out.print("Invalid input");
+			  System.out.print("\n");
 			  return false;
 		  }
 	  }

@@ -1,9 +1,10 @@
-insert clothing shirt 20.50 1 1
-insert grocery cabbage 4.00 5 3 P
+insert clothing shirt 20.50 8589934592 1.5
+inSert clothing shirt 20.50 1 1
+insert grocery cabbage 4.00 5 8 P
 insert electronics xbox 400 2 3 F NM
-insert electronics xbox360 400 2 3 NF NM
+insert electronics xbox360 400 2 3 NF NZ
 insert grocery cabbage 5.00 5 3 P
 update shirt 50
-search xbox
+search cabbage
 delete cabbage
 print

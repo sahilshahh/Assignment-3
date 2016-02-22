@@ -26,7 +26,7 @@ public class Grocery extends Item {
 		double final_price = 0;
 		double shipping = 0;
 		if (perishable = true){
-			shipping = (.2*weight*quantity)*.2;
+			shipping = (.2*weight*quantity)*1.2;
 		}
 		else{
 			shipping = (.2*weight*quantity);

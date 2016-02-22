@@ -38,7 +38,7 @@ public class Electronics extends Item
 		double shipping =0;
 		double salestax1 = 0;
 		if (fragile){
-			shipping = (.2*weight*quantity)*.2;
+			shipping = (.2*weight*quantity)*1.2;
 		}
 		else{
 			shipping = (.2*weight*quantity);
