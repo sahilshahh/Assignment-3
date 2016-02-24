@@ -1,3 +1,7 @@
+/* Shah, Sahil and Shahi, Yash
+ * ss63683 and ys7548
+ * EE 422C - Assignment 3*/
+
 package Assignment3;
 
 import java.util.*;
@@ -10,15 +14,7 @@ public class A3Driver
 	{
 
 	  public static void main(String[] args) 
-	  {
-		/* while (file function)
-		 * 	instantiate arraylist
-		 * 	call input function
-		 *  while(checkerror)
-		 *  	switch(operation)
-		 *  		operations	
-		 * */
-		  		
+	  {		  		
 		  ArrayList<String> fileinput = new ArrayList<String>();
 		  fileinput = file(args[0]);
 		  ArrayList<Item> shoppingCart = new ArrayList<Item>();
@@ -42,12 +38,9 @@ public class A3Driver
 				  		break;
 				  	case "print":
 				  		print(shoppingCart);
-				  }
-					  
+				  }					  
 			  }
-		  }
-		//breakpoint
-		int zero = 0; 		
+		  }	
 	  }
 	  
 	  
@@ -69,17 +62,15 @@ public class A3Driver
 		  int x = 0;
 		  boolean added = false;
 		  String inputname = input.getName();
-		  //inputname = inputname.toUpperCase();
 		  
 			while (i.hasNext() && !added) 
 			{
 				boolean incremented = false;
 				Item temp = i.next();
 				String name = temp.getName();
-				//name = name.toUpperCase();
 				
-////////////if the shoppingcart word's first letter is greater than inputname's
-//////////first letter then add
+                //if the shoppingcart word's first letter is greater than inputname's
+                //first letter then add
 				if(name.charAt(0) > inputname.charAt(0))
 				{
 					shoppingCart.add(x, input);
@@ -87,7 +78,7 @@ public class A3Driver
 					System.out.println("The item " + input.getName()+ " was added to the shoppingcart");
 				}
 				
-///////if first letter less than input's first letter then increment x
+                //if first letter less than input's first letter then increment x
 				if(name.charAt(0) < inputname.charAt(0))
 				{
 					x++;
@@ -95,7 +86,7 @@ public class A3Driver
 				}
 				
 				
-////////////in case they have the same beginning letters, for example shirts and shorts
+                //in case they have the same beginning letters, for example shirts and shorts
 				if(name.charAt(0)==inputname.charAt(0))
 				{
 					for(int y = 1; y<name.length();y++)
@@ -113,14 +104,14 @@ public class A3Driver
 					}
 				}
 				
-///////////increment x if same beginning but shoppingcart name should come before input name
+                //increment x if same beginning but shoppingcart name should come before input name
 				if(!added && !incremented)
 				{
 					x++;
 				}
 			}
 
-/////in case the item to be added is supposed to be the last entry in arraylist
+            //in case the item to be added is supposed to be the last entry in arraylist
 			if(!added)
 			{
 				shoppingCart.add(shoppingCart.size(), input);
@@ -139,7 +130,8 @@ public class A3Driver
 	  static void search(ArrayList<Item> shoppingCart, String input){ //sahil
 		  Iterator<Item> i = shoppingCart.iterator();
 		  int quantity = 0;
-		  while (i.hasNext()) 
+		  //iterates through the shopping cart to find the variable that matches the input variable name
+		  while (i.hasNext())
 		  {
 			  Item temp = i.next();
 			  if (temp.getName().equals(input)){
@@ -162,10 +154,12 @@ public class A3Driver
 		  ArrayList<Integer> indexlist = new ArrayList<Integer>();
 		  int index = 0;
 		  int delete = 0;
+		  //iterates through the shopping cart to find the variable that matches the input variable name
 		  while (i.hasNext()) 
 		  {
 			  Item temp = i.next();
 			  if (temp.getName().equals(input)){
+				  //adds the index of the element to be deleted into an arraylist
 				  indexlist.add(index);
 				  delete++;
 			  }
@@ -176,6 +170,7 @@ public class A3Driver
 		  while (j.hasNext()) 
 		  {			  
 		        j.next();
+		        //removes the elements at the index specified by the indexlist
 		        if(indexlist.contains(count)){
 		            j.remove();
 		        }
@@ -265,43 +260,46 @@ public class A3Driver
 			  if(transaction[1].equals("clothing")){
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					  //checks if the value is too big for an integer to hold
 					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
-						    System.out.print("Invalid input");
+						    System.out.print("Invalid input. Number is too big.");
 							System.out.print("\n");
 						  	return false;
 					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
 						  try{
+							  //checks if the value is too big for an integer to hold
 							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
-								  	System.out.print("Invalid input");
+								  	System.out.print("Invalid input. Number is too big.");
 									System.out.print("\n");
 								  	return false;
 							  }
+							  //if the next line fails, the program goes to the catch
 							  int amount2 = Integer.parseInt(transaction[5]);
 							  if (amount2 > 0){
 							  	return true;
 						  	  }
 						  	  else{
-							  	System.out.print("Invalid input");
+							  	System.out.print("Invalid input. Number isn't positive.");
 								System.out.print("\n");
 							  	return false;
 						  	}
 						  }
 						  catch(Exception e){
-								System.out.print("Invalid input");
+								System.out.print("Invalid input. Number isn't an integer.");
 								System.out.print("\n");
 								return false;
 						  }						  						  						  					
 					  }
 					  else{
-						  System.out.print("Invalid input");
+						  System.out.print("Invalid input. Number isn't positive.");
 						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
-					  System.out.print("Invalid input");
+					  System.out.print("Invalid input. Number isn't positive.");
 					  System.out.print("\n");
 					  return false;
 				  }
@@ -309,50 +307,53 @@ public class A3Driver
 			  if(transaction[1].equals("grocery")){
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					//checks if the value is too big for an integer to hold
 					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
-						  	System.out.print("Invalid input");
+						  	System.out.print("Invalid input. Number is too big.");
 							System.out.print("\n");
 						  	return false;
 					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
 						  try{
+							  //checks if the value is too big for an integer to hold
 							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
-								  	System.out.print("Invalid input");
+								  	System.out.print("Invalid input. Number is too big.");
 									System.out.print("\n");
 								  	return false;
 							  }
+							  //if the next line fails, the program goes to the catch
 							  int amount2 = Integer.parseInt(transaction[5]);
 							  if (amount2 > 0){
 								  if (transaction[6].equals("NP")|| transaction[6].equals("P")){
 									  return true;
 								  }
 								  else{
-									  System.out.print("Invalid input");
+									  System.out.print("Invalid input. Wrong perishable value.");
 									  System.out.print("\n");
 									  return false;
 								  }
 							  }
 							  else{
-								  System.out.print("Invalid input");
+								  System.out.print("Invalid input. Number isn't positive.");
 								  System.out.print("\n");
 								  return false;
 						  		}
 						  	}
 						  	catch (Exception e){
-						  		System.out.print("Invalid input");
+						  		System.out.print("Invalid input. Number isn't an integer.");
 						  		System.out.print("\n");
 						  		return false;
 						  	}
 					  }
 					  else{
-						  System.out.print("Invalid input");
+						  System.out.print("Invalid input. Number isn't positive.");
 						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
-					  System.out.print("Invalid input");
+					  System.out.print("Invalid input. Number isn't positive.");
 					  System.out.print("\n");
 					  return false;
 				  }
@@ -368,63 +369,67 @@ public class A3Driver
 			      };
 				  double amount = Double.parseDouble(transaction[3]);
 				  if (amount > 0){
+					//checks if the value is too big for an integer to hold
 					  if (Double.parseDouble(transaction[4])>(Math.pow(2, 32)-1)){
-						  	System.out.print("Invalid input");
+						  	System.out.print("Invalid input. Number is too big.");
 							System.out.print("\n");
 						  	return false;
 					  }
 					  int amount1 = Integer.parseInt(transaction[4]);
 					  if (amount1 >0){
 						  try{
+							//checks if the value is too big for an integer to hold
 							  if (Double.parseDouble(transaction[5])>(Math.pow(2, 32)-1)){
-								  	System.out.print("Invalid input");
+								  	System.out.print("Invalid input. Number is too big.");
 									System.out.print("\n");
 								  	return false;
 							  }
+							  //if the next line fails, the program goes to the catch
 							  int amount2 = Integer.parseInt(transaction[5]);
 							  if (amount2 > 0){
 								  if (transaction[6].equals("F")|| transaction[6].equals("NF")){
+									  //checks if the input is a valid state
 									  if (Arrays.asList(states).contains(transaction[7].toUpperCase())){
 										  return true;
 									  }
 									  else{
-										  System.out.print("Invalid input");
+										  System.out.print("Invalid input. Not a valid state.");
 										  System.out.print("\n");
 										  return false;
 									  }
 								  }
 								  else{
-									  System.out.print("Invalid input");
+									  System.out.print("Invalid input. Number isn't positive.");
 									  System.out.print("\n");
 									  return false;
 								  }
 							  }
 							  else{
-								  System.out.print("Invalid input");
+								  System.out.print("Invalid input. Number isn't positive.");
 								  System.out.print("\n");
 								  return false;
 							  }
 						  }
 						  catch(Exception e){
-							  System.out.print("Invalid input");
+							  System.out.print("Invalid input. Number isn't an integer.");
 							  System.out.print("\n");
 							  return false;
 						  }
 					  }
 					  else{
-						  System.out.print("Invalid input");
+						  System.out.print("Invalid input. Number isn't positive.");
 						  System.out.print("\n");
 						  return false;
 					  }
 				  }
 				  else{
-					  System.out.print("Invalid input");
+					  System.out.print("Invalid input. Number isn't positive.");
 					  System.out.print("\n");
 					  return false;
 				  }
 			  }
 			  else{
-				  System.out.print("Invalid input");
+				  System.out.print("Invalid input. Not a valid item.");
 				  System.out.print("\n");
 				  return false;
 			  }
@@ -441,7 +446,7 @@ public class A3Driver
 				  return true;
 			  }
 			  else{
-				  System.out.print("Invalid input");
+				  System.out.print("Invalid input. Number is negative.");
 				  System.out.print("\n");
 				  return false;
 			  }
@@ -450,7 +455,7 @@ public class A3Driver
 			  return true;
 		  }
 		  else {
-			  System.out.print("Invalid input");
+			  System.out.print("Invalid input. Transaction is not valid.");
 			  System.out.print("\n");
 			  return false;
 		  }
@@ -493,12 +498,15 @@ public class A3Driver
 				System.err.println ("Error: IO exception. Exiting...");
 				e.printStackTrace();
 				System.exit(-1);
-			}
-		  
-		  
+			}		  		  
 		  return null;
 	  }
 	  
+	  /******************************************************************************
+	  * Method Name: createobjects                                                  *
+	  * Purpose: Creates the item that is specified in the input string             *
+	  * Returns: The item object                                                               *
+	  ******************************************************************************/
 	  public static Item createobjects(String[] input){
 		  String temp = input[1];
 		  temp = temp.toUpperCase();
@@ -559,12 +567,9 @@ public class A3Driver
 			  }
 			  else{
 			 	elec.setSalestax(false);
-			  }
-				
+			  }				
 			  return elec;
 		  }
-		  return null;
-		  
+		  return null;  
 	  }
-
 }

@@ -6,5 +6,5 @@ insert electronics xbox360 400 2 3 NF NZ
 insert grocery cabbage 5.00 5 3 P
 update shirt 50
 search cabbage
-delete cabbage
+delete shirt
 print

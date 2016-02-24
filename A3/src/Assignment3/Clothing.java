@@ -1,3 +1,7 @@
+/* Shah, Sahil and Shahi, Yash
+ * ss63683 and ys7548
+ * EE 422C - Assignment 3*/
+
 package Assignment3;
 
 public class Clothing extends Item 
